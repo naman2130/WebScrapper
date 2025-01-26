@@ -34,7 +34,7 @@ class ProductScraper:
             title = product_div.find("h2", class_="woo-loop-product__title").text.strip()
             price_str = product_div.find("span", class_="woocommerce-Price-amount").text.strip()
             price = float(price_str.replace("₹", "").replace(",", ""))
-            image_url = product_div.find("img", class_="attachment-woocommerce_thumbnail")["src"]
+            image_url = product_div.find("img", class_="attachment-woocommerce_thumbnail")["data-lazy-src"]
             image_path = self.storage.save_image(image_url)
 
             products.append({
